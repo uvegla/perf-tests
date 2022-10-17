@@ -16,7 +16,7 @@ metadata:
 spec:
   logLevel: debug
   enableAdminAPI: true
-  baseImage: gcr.io/k8s-testimages/quay.io/prometheus/prometheus
+  image: gcr.io/k8s-testimages/quay.io/prometheus/prometheus:v2.34.0
   nodeSelector:
     kubernetes.io/os: linux
     {{$PROMETHEUS_NODE_SELECTOR}}
@@ -68,7 +68,7 @@ spec:
   storage:
     volumeClaimTemplate:
       spec:
-        storageClassName: ssd
+        storageClassName: gp3
         resources:
           requests:
             # Start with 10Gi, add 10Gi for each 1K nodes.
